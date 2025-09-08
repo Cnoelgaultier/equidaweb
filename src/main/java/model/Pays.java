@@ -45,5 +45,12 @@ public class Pays {
     }
     
     
+    public void add(Client unClient){
+        if(lesClients ==null){
+            lesClients = new ArrayList<Client>();
+        }
+        lesClients.add(unClient);
+    }
+    
     
 }

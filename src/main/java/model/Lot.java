@@ -16,6 +16,7 @@ public class Lot {
     private int prixDepart; 
     
     private ArrayList<Enchere> lesEncheres; 
+    
 
     public Lot(int id, int prixDepart, ArrayList<Enchere> lesEncheres) {
         this.id = id;
@@ -46,6 +47,16 @@ public class Lot {
     public void setLesEncheres(ArrayList<Enchere> lesEncheres) {
         this.lesEncheres = lesEncheres;
     }
+
+   public void addEnchere(Enchere uneEnchere){
+       if (lesEncheres ==null){
+           lesEncheres = new ArrayList<Enchere>();
+           
+       }
+       lesEncheres.add(uneEnchere);
+   }
+    
+    
     
     
     

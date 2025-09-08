@@ -37,7 +37,7 @@ public class Lieu {
         return Commentaire;
     }
 
-    public ArrayList getLesVentes() {
+    public ArrayList<Vente> getLesVentes() {
         return lesVentes;
     }
 

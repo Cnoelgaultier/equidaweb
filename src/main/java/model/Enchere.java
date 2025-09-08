@@ -14,6 +14,7 @@ public class Enchere {
     private int Montant; 
     
     private Lot lot; 
+    
 
     public Enchere() {
     }

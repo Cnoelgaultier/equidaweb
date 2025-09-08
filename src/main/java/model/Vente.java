@@ -22,7 +22,7 @@ public class Vente {
     
     
     private ArrayList<Courriel> lesCourriels ; 
-    
+    private ArrayList<Lot> lesLots;
     public Vente(){
         
     }
@@ -74,9 +74,32 @@ public class Vente {
     public void setCategVente(CategVente categVente) {
         this.categVente = categVente;
     }
+
+    public ArrayList<Lot> getLesLots() {
+        return lesLots;
+    }
+
+    public void setLesLots(ArrayList<Lot> lesLots) {
+        this.lesLots = lesLots;
+    }
     
     
     
+    public void addCourriel(Courriel unCourriel){
+        if (lesCourriels ==null){
+        lesCourriels = new ArrayList<Courriel>();
+        
+    }
+        lesCourriels.add(unCourriel);
+    }
+    
+    public void addLot(Lot unLot){
+        if (lesLots ==null){
+            lesLots = new ArrayList<Lot>();
+            
+        }
+        lesLots.add(unLot);
+    }
     }
 
     

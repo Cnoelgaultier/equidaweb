@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sio2
@@ -19,6 +21,8 @@ public class Client {
     private String adresseMessagerie ; 
     
     private Pays pays; 
+    
+    private ArrayList<Enchere> lesEncheres ;
     
     
    
@@ -99,6 +103,13 @@ public class Client {
     }
     
             
+    public void addEnchere (Enchere uneEnchere){
+        if (lesEncheres ==null){
+            lesEncheres = new ArrayList<Enchere>();
+            
+        }
+        lesEncheres.add(uneEnchere);
+    }
     
     
 }

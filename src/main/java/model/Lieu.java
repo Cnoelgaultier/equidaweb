@@ -61,7 +61,13 @@ public class Lieu {
         this.lesVentes = lesVentes;
     }
     
-    
+    public void addVente(Vente uneVente){
+        if (lesVentes == null){
+            lesVentes = new ArrayList<Vente>();
+            
+        }
+        lesVentes.add(uneVente);
+    }
     
     
 }

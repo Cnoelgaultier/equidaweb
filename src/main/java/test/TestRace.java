@@ -22,7 +22,8 @@ public class TestRace
         Cheval c2 = new Cheval();
         c2.setId(7);
         c2.setNom("Comète");
-        r.addCheval(c2);
+        
+        r.addCheval(c1);
 
         //Affichage des informations de la race
         System.out.println("La race est " + r.getId() + " " + r.getNom() + " et contient " + r.getLesChevaux().size() + " chevaux" );

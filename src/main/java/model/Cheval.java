@@ -8,9 +8,24 @@ public class Cheval {
     private int id;
     private String nom;
     private LocalDate dateNaissance;
+    private String codeSire; 
+    private double  taille;
+    private double poids;
+    private Cheval chevalPere;
+    private Cheval chevalMere;
 
     private Race race;
     private ArrayList<Lot> lesLots;
+    private ArrayList<ChevalCourse> lesChevauxcourses;
+    private ArrayList<Course> lesCourses;
+
+    public ArrayList<ChevalCourse> getLesChevauxcourses() {
+        return lesChevauxcourses;
+    }
+
+    public void setLesChevauxcourses(ArrayList<ChevalCourse> lesChevauxcourses) {
+        this.lesChevauxcourses = lesChevauxcourses;
+    }
     
 
     public Cheval() {
@@ -50,6 +65,31 @@ public class Cheval {
         return lesLots;
     }
 
+    public String getCodeSire() {
+        return codeSire;
+    }
+
+    public void setCodeSire(String codeSire) {
+        this.codeSire = codeSire;
+    }
+
+    public double getTaille() {
+        return taille;
+    }
+
+    public void setTaille(double taille) {
+        this.taille = taille;
+    }
+
+    public double getPoids() {
+        return poids;
+    }
+
+    public void setPoids(double poids) {
+        this.poids = poids;
+    }
+       
+
     public void setLesLots(ArrayList<Lot> lesLots) {
         this.lesLots = lesLots;
     }
@@ -62,6 +102,46 @@ public class Cheval {
         }
         lesLots.add(unLot);
     }
+
+    public Cheval getChevalPere() {
+        return chevalPere;
+    }
+
+    public void setChevalPere(Cheval chevalPere) {
+        this.chevalPere = chevalPere;
+    }
+
+    public Cheval getChevalMere() {
+        return chevalMere;
+    }
+
+    public void setChevalMere(Cheval chevalMere) {
+        this.chevalMere = chevalMere;
+    }
+    
+    public void addChevalCourse(ChevalCourse unChevalCourse){
+        if(lesChevauxcourses ==null){
+            lesChevauxcourses = new ArrayList<ChevalCourse>();
+        }
+        lesChevauxcourses.add(unChevalCourse);
+    }
+
+    public ArrayList<Course> getLesCourses() {
+        return lesCourses;
+    }
+
+    public void setLesCourses(ArrayList<Course> lesCourses) {
+        this.lesCourses = lesCourses;
+    }
+    
+    public void addCourse(Course uneCourse)
+    {
+        if(lesCourses ==null){
+            lesCourses = new ArrayList<Course>();
+        }
+        lesCourses.add(uneCourse);
+    }
+    
     
     
 }

@@ -15,10 +15,12 @@ public class Vente {
     private int id;
     private String nom;
     private LocalDate dateDebutVente;
+    private String corpsMessage;
     
     private Lieu lieu; 
     
     private CategVente categVente; 
+
     
     
     private ArrayList<Courriel> lesCourriels ; 
@@ -100,6 +102,16 @@ public class Vente {
         }
         lesLots.add(unLot);
     }
+
+    public String getCorpsMessage() {
+        return corpsMessage;
+    }
+
+    public void setCorpsMessage(String corpsMessage) {
+        this.corpsMessage = corpsMessage;
+    }
+    
+    
     }
 
     

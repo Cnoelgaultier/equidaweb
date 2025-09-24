@@ -16,6 +16,7 @@ public class Lieu {
     private int nbBoxes; 
     private String Commentaire;
     
+    
     private ArrayList<Vente> lesVentes ; 
 
     public Lieu() {

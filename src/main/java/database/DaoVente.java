@@ -4,8 +4,10 @@
  */
 package database;
 
+import static database.DaoCheval.resultatRequete;
 import model.Vente;
 import model.Lieu;
+import model.Lot;
 
 
 
@@ -53,6 +55,54 @@ public class DaoVente {
         }
         return lesVentes;
     }
+    
+    public static ArrayList<Lot> getLesLots(Connection cnx, int idVente) {
+    ArrayList<Lot> lesLots = new ArrayList<Lot>();
+    PreparedStatement requeteSql = null;
+    ResultSet resultatRequete = null;
+
+    try {
+        requeteSql = cnx.prepareStatement(
+            "SELECT c.id AS c_id, c.nom AS c_nom, lot.idCheval as l_idCheval, lot.id as l_id, lot.id AS lot_id FROM cheval c INNER JOIN lot ON lot.idCheval = c.id WHERE lot.idVente = ?;"
+        );
+
+        // Injection du paramètre
+        requeteSql.setInt(1, idVente);
+        System.out.println("REQUETE =" + requeteSql);
+
+        resultatRequete = requeteSql.executeQuery();
+
+        while (resultatRequete.next()) {
+            
+            
+            Cheval cheval = new Cheval();
+            cheval.setId(resultatRequete.getInt("c_id"));
+            cheval.setNom(resultatRequete.getString("c_nom"));
+
+            
+            Lot l = new Lot();
+            l.setId(resultatRequete.getInt("l_id"));
+            l.setCheval(cheval);
+              
+            
+            lesLots.add(l);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Erreur lors de la récupération des lots : " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        try {
+            if (resultatRequete != null) resultatRequete.close();
+            if (requeteSql != null) requeteSql.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    return lesLots;
+}
+
     
     public static Vente getLaVente(Connection cnx, int idVente) {
     Vente vente = null;

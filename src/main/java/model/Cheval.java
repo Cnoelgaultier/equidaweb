@@ -18,6 +18,7 @@ public class Cheval {
     private ArrayList<Lot> lesLots;
     private ArrayList<ChevalCourse> lesChevauxcourses;
     private ArrayList<Course> lesCourses;
+    private ArrayList<Participer> lesParticipants; 
 
     public ArrayList<ChevalCourse> getLesChevauxcourses() {
         return lesChevauxcourses;
@@ -140,6 +141,23 @@ public class Cheval {
             lesCourses = new ArrayList<Course>();
         }
         lesCourses.add(uneCourse);
+    }
+
+    public ArrayList<Participer> getLesParticipants() {
+        return lesParticipants;
+    }
+
+    public void setLesParticipants(ArrayList<Participer> lesParticipants) {
+        this.lesParticipants = lesParticipants;
+    }
+    
+    public void addParticipant(Participer unParticipant)
+    {
+        if(lesParticipants == null){
+            lesParticipants = new ArrayList<Participer>();
+            
+        }
+        lesParticipants.add(unParticipant); 
     }
     
     

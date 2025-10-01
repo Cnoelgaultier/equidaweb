@@ -90,7 +90,7 @@ public class DaoCheval {
     ResultSet resultatRequete = null;
     
     try{
-        requeteSql = cnx.prepareStatement("SELECT c.id, c.nom\n" +
+        requeteSql = cnx.prepareStatement("SELECT c.id, c.nom, p.position, p.temps\n" +
 "FROM course c\n" +
 "INNER JOIN participer p ON p.idCourse = c.id\n" +
 "WHERE p.idCheval = ?;");
@@ -106,7 +106,17 @@ public class DaoCheval {
             course.setNom(resultatRequete.getString("c.nom"));
             course.setId(resultatRequete.getInt("c.id"));
             
+            
+            
+            
+            
+            
+            
             Participer p = new Participer();
+            p.setPositions(resultatRequete.getInt("p.position"));
+            p.setTemps(resultatRequete.getDouble("p.temps"));
+            
+            
             p.setCourse(course);
             
             

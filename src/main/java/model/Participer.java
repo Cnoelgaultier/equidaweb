@@ -16,6 +16,8 @@ public class Participer {
     
     private Cheval cheval;
     private Course course; 
+    private Double temps;
+    private int positions;
 
     public Participer() {
     }
@@ -40,6 +42,24 @@ public class Participer {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    public Double getTemps() {
+        return temps;
+    }
+
+    public void setTemps(Double temps) {
+        this.temps = temps;
+    }
+
+    public int getPositions() {
+        return positions;
+    }
+
+    public void setPositions(int positions) {
+        this.positions = positions;
+    }
+    
+    
     
     
     

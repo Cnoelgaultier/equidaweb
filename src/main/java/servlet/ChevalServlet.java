@@ -16,6 +16,7 @@ import jakarta.servlet.annotation.*;
 import model.Cheval;
 import model.Race;
 import java.time.LocalDate;
+import model.Participer;
 
 @WebServlet(name = "chevalServlet", value = "/cheval-servlet/*")
 public class ChevalServlet extends HttpServlet {
@@ -43,22 +44,26 @@ public class ChevalServlet extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/list.jsp").forward(request, response);
         }
         if ("/show".equals(path)) {
-            try {
-                int idCheval = Integer.parseInt(request.getParameter("idCheval"));
-                Cheval leCheval = DaoCheval.getLeCheval(cnx, idCheval);
+    try {
+        int idCheval = Integer.parseInt(request.getParameter("idCheval"));
+        Cheval leCheval = DaoCheval.getLeCheval(cnx, idCheval);
 
-                if (leCheval != null) {
-                    request.setAttribute("pLeCheval", leCheval);
-                    this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/show.jsp").forward(request, response);
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/cheval-servlet/lister");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Erreur : l'id du cheval n'est pas un nombre valide");
-                response.sendRedirect(request.getContextPath() + "/cheval-servlet/lister");
-            }
+        if (leCheval != null) {
+            // 🔽 Récupération des participations du cheval
+            ArrayList<Participer> pLesParticipants = DaoCheval.getLesParticipants(cnx, idCheval);
+            request.setAttribute("pLesParticipants", pLesParticipants);
 
+            request.setAttribute("pLeCheval", leCheval);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/views/cheval/show.jsp").forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/cheval-servlet/lister");
         }
+    } catch (NumberFormatException e) {
+        System.out.println("Erreur : l'id du cheval n'est pas un nombre valide");
+        response.sendRedirect(request.getContextPath() + "/cheval-servlet/lister");
+    }
+}
+
 
         if ("/add".equals(path)) {
             ArrayList<Race> lesRaces = DaoRace.getLesRaces(cnx);

@@ -6,7 +6,9 @@ model\Olympiade.class
 model\Course.class
 database\Connexionbdd.class
 model\Courriel.class
+servlet\VenteServlet.class
 model\Vente.class
+model\Participer.class
 test\TestRace.class
 database\ConnexionServlet.class
 model\Pays.class

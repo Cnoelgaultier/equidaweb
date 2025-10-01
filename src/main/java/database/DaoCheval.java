@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.Participer;
+import model.Course;
+
 public class DaoCheval {
     Connection cnx;
     static PreparedStatement requeteSql = null;
@@ -78,6 +81,58 @@ public class DaoCheval {
             System.out.println("La requête de getLeCheval a généré une exception SQL");
         }
         return cheval;
+    }
+    
+    public static ArrayList<Participer> getLesParticipants(Connection cnx, int idCheval){
+        
+        ArrayList<Participer> lesParticipants = new ArrayList<Participer>();
+    PreparedStatement requeteSql = null;
+    ResultSet resultatRequete = null;
+    
+    try{
+        requeteSql = cnx.prepareStatement("SELECT c.id, c.nom\n" +
+"FROM course c\n" +
+"INNER JOIN participer p ON p.idCourse = c.id\n" +
+"WHERE p.idCheval = ?;");
+        
+        requeteSql.setInt(1, idCheval);
+        System.out.println("REQUETE =" + requeteSql);
+        resultatRequete = requeteSql.executeQuery();
+        
+        
+        while (resultatRequete.next()) {
+            
+            Course course = new Course();
+            course.setNom(resultatRequete.getString("c.nom"));
+            course.setId(resultatRequete.getInt("c.id"));
+            
+            Participer p = new Participer();
+            p.setCourse(course);
+            
+            
+            lesParticipants.add(p);
+            
+
+            
+            
+            
+           
+        }
+        
+    } catch (SQLException e) {
+        System.out.println("Erreur lors de la récupération des lots : " + e.getMessage());
+        e.printStackTrace();
+    } finally {
+        try {
+            if (resultatRequete != null) resultatRequete.close();
+            if (requeteSql != null) requeteSql.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    return lesParticipants;
+    
     }
     /**
      * Ajoute un nouveau cheval dans la base de données

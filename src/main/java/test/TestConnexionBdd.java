@@ -13,6 +13,11 @@ public class TestConnexionBdd {
 
         Connection cnx = Connexionbdd.ouvrirConnexion();
         System.out.println ("nombre de chevaux = " + DaoVente.getLesLots(cnx, 1).size());
+       System.out.println("Père id: " + DaoCheval.getLeCheval(cnx, 1).getChevalPere() );
+       System.out.println("Père id: " + DaoCheval.getLeCheval(cnx, 1).getChevalMere() );
+
+
+        
         System.out.println ("nombre de Course = " + DaoCheval.getLesParticipants(cnx, 1).size());
         /*
         System.out.println ("nombre de chevaux = " + DaoCheval.getLesChevaux(cnx).size());

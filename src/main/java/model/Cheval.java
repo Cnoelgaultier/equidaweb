@@ -13,6 +13,8 @@ public class Cheval {
     private double poids;
     private Cheval chevalPere;
     private Cheval chevalMere;
+    private int Position;
+    private double temps;
 
     private Race race;
     private ArrayList<Lot> lesLots;
@@ -159,6 +161,24 @@ public class Cheval {
         }
         lesParticipants.add(unParticipant); 
     }
+
+    public int getPosition() {
+        return Position;
+    }
+
+    public void setPosition(int Position) {
+        this.Position = Position;
+    }
+
+    public double getTemps() {
+        return temps;
+    }
+
+    public void setTemps(double temps) {
+        this.temps = temps;
+    }
+    
+    
     
     
     

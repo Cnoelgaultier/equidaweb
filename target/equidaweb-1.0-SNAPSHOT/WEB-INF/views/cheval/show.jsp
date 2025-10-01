@@ -85,49 +85,48 @@
                             </div>
                                 
                             <div class="row detail-row">
-    <div class="col-sm-3 detail-label">Liste des Course </div>
+    <div class="col-sm-3 detail-label">Liste des courses</div>
     <div class="col-sm-9 detail-value">
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    <th>Id Course</th>
-                    <th>Liste Course</th>
+                    <th>ID Course</th>
+                    <th>Nom de la course</th>
+                    <th>Position</th>
+                    <th>Temps (en secondes)</th>
                 </tr>
-                </thead>
-                <tbody>
-                    <% 
+            </thead>
+            <tbody>
+                <%
                     ArrayList<Participer> lesParticipants = (ArrayList<Participer>) request.getAttribute("pLesParticipants");
 
-                    if (lesParticipants != null) {
+                    if (lesParticipants != null && !lesParticipants.isEmpty()) {
                         for (Participer participer : lesParticipants) {
                             Course course = participer.getCourse();
                 %>
-                    <tr>
-                        <td><%= course.getId() %></td>
-                       <td>
-  <a href="<%= request.getContextPath() %>/cheval-servlet/show?idCourse=<%= course.getId() %>"><%= course.getNom() %>
-   
-  </a>
-</td>
-
-                                
-                    </tr>
-                    
-                    <% 
+                <tr>
+                    <td><%= course.getId() %></td>
+                    <td>
+                        <a href="<%= request.getContextPath() %>/cheval-servlet/show?idCourse=<%= course.getId() %>">
+                            <%= course.getNom() %>
+                        </a>
+                    </td>
+                    <td><%= participer.getPositions() %></td>
+                    <td><%= participer.getTemps() %></td>
+                </tr>
+                <% 
                         } 
                     } else { 
                 %>
-                    <tr>
-                        <td colspan="2">Ce cheval n'as fais aucune course.</td>
-                    </tr>
+                <tr>
+                    <td colspan="4">Ce cheval n’a participé à aucune course.</td>
+                </tr>
                 <% } %>
-                    
-                    
-                </tbody>
-            
+            </tbody>
         </table>
     </div>
 </div>
+
 
                             <div class="row" style="margin-top: 30px;">
                                 <div class="col-sm-offset-3 col-sm-9">

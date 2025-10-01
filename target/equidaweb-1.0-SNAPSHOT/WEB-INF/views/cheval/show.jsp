@@ -84,6 +84,20 @@
                                 </div>
                             </div>
                                 
+                                <div class="row detail-row">
+                                <div class="col-sm-3 detail-label">Nom du pere</div>
+                                <div class="col-sm-9 detail-value">
+                                   <%= (leCheval.getChevalPere() != null && leCheval.getChevalPere().getNom() != null) ? leCheval.getChevalPere().getNom() : "Non renseignée" %>
+
+                                </div>
+                            </div>
+                                <div class="row detail-row">
+                                <div class="col-sm-3 detail-label">Nom de la mere</div>
+                                <div class="col-sm-9 detail-value">
+                                    <%= (leCheval.getChevalMere() != null && leCheval.getChevalMere().getNom() != null) ? leCheval.getChevalMere().getNom() : "Non renseignée" %>
+                                </div>
+                            </div>
+                                
                             <div class="row detail-row">
     <div class="col-sm-3 detail-label">Liste des courses</div>
     <div class="col-sm-9 detail-value">
@@ -126,6 +140,11 @@
         </table>
     </div>
 </div>
+            
+          
+
+            
+            
 
 
                             <div class="row" style="margin-top: 30px;">
